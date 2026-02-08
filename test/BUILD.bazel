@@ -7,3 +7,17 @@ py_binary(
     visibility = ["//visibility:public"],
     deps = [requirement("pyfirmata2")],
 )
+
+py_binary(
+    name = "i2c_firmata",
+    srcs = ["i2c_firmata.py"],
+    visibility = ["//visibility:public"],
+    deps = [requirement("pyfirmata2")],
+)
+
+py_binary(
+    name = "mpu6050",
+    srcs = ["mpu6050.py"],
+    visibility = ["//visibility:public"],
+    deps = [requirement("smbus2")],
+)

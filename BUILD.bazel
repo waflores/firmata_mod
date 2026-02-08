@@ -1,5 +1,6 @@
 load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
 refresh_compile_commands(
     name = "refresh_compile_commands",
@@ -23,5 +24,11 @@ cc_library(
         "i2c-firmata.c",
         "spi-firmata.c",
     ],
-    hdrs = ["firmata.h"]
+    hdrs = ["firmata.h"],
+)
+
+compile_pip_requirements(
+    name = "requirements",
+    src = "requirements.in",
+    requirements_txt = "requirements_lock.txt",
 )

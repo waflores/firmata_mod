@@ -1,4 +1,4 @@
-startup --windows_enable_symlinks --host_jvm_args=-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT
+startup --windows_enable_symlinks # --host_jvm_args=-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT
 # startup --output_user_root=C:/bzl
 common --enable_platform_specific_config --repo_env=LC_ALL="en_US.UTF-8"
 common --show_timestamps --verbose_failures

@@ -16,8 +16,15 @@ py_binary(
 )
 
 py_binary(
-    name = "mpu6050",
-    srcs = ["mpu6050.py"],
+    name = "raw_mpu6050",
+    srcs = ["raw_mpu6050.py"],
     visibility = ["//visibility:public"],
     deps = [requirement("smbus2")],
+)
+
+py_binary(
+    name = "pyfirmata_mpu6050",
+    srcs = ["pyfirmata_mpu6050.py"],
+    visibility = ["//visibility:public"],
+    deps = [requirement("pyfirmata2")],
 )

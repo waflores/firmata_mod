@@ -86,7 +86,7 @@ class Blink:
 PORT = pyfirmata2.Arduino.AUTODETECT
 
 # Creates a new board
-board = pyfirmata2.Arduino(PORT)
+board = pyfirmata2.Arduino(PORT, debug=True)
 
 t = Blink(board, 1)
 t.start()

@@ -2,6 +2,6 @@
 # Make the ttyACMX device something that those in the arduino group are capable of accessing
 SUBSYSTEMS=="usb", ATTRS{idProduct}=="0042", ATTRS{idVendor}=="2341", GROUP="arduino", MODE="0660"
 # On device addition, automatically startup firmata_mod
-SUBSYSTEM=="tty", ACTION=="add", ATTRS{idProduct}=="0042", ATTRS{idVendor}=="2341", GROUP="arduino", MODE="0660", RUN+="/usr/sbin/modprobe --verbose firmata_mod firmata_port=$kernel baud_rate=57600" 
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idProduct}=="0042", ATTRS{idVendor}=="2341", GROUP="arduino", MODE="0660", RUN+="/usr/sbin/modprobe --verbose firmata_mod firmata_port=$kernel baud_rate=57600"
 # On device removal, automatically remove firmata_mod driver
 SUBSYSTEM=="tty", ACTION=="remove", ATTRS{idProduct}=="0042", ATTRS{idVendor}=="2341", RUN+="/usr/sbin/rmmod --verbose spi_firmata i2c_firmata firmata_mod"

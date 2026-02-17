@@ -1,0 +1,75 @@
+{
+  "nodes": {
+    "blueprint": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1767386128,
+        "narHash": "sha256-BJDu7dIMauO2nYRSL4aI8wDNtEm2KOb7lDKP3hxdrpo=",
+        "type": "tarball",
+        "url": "https://github.com/numtide/blueprint/archive/0ed984d51a3031065925ab08812a5434f40b93d4.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/numtide/blueprint/archive/0ed984d51a3031065925ab08812a5434f40b93d4.tar.gz"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1764015464,
+        "narHash": "sha256-kyO9O2jDsL2X1uriS5bCpjaEbUh+wqhVXZbC3Z4Q1OM=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/2493002b10ccef0880f72d7720538f91fb4f7434.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/2493002b10ccef0880f72d7720538f91fb4f7434.tar.gz"
+      }
+    },
+    "root": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "nixpkgs": "nixpkgs",
+        "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768158989,
+        "narHash": "sha256-67vyT1+xClLldnumAzCTBvU0jLZ1YBcf4vANRWP3+Ak=",
+        "type": "tarball",
+        "url": "https://github.com/numtide/treefmt-nix/archive/e96d59dff5c0d7fddb9d113ba108f03c3ef99eca.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/numtide/treefmt-nix/archive/e96d59dff5c0d7fddb9d113ba108f03c3ef99eca.tar.gz"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

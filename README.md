@@ -144,12 +144,12 @@ FileNotFoundError: [Errno 2] No such file or directory
 The bus-number give (16 in the above case) can be learned from running
 ```
 $ i2cdetect -l
-i2c-0   i2c             Synopsys DesignWare I2C adapter         I2C adapter
+i2c-0   i2c             Synopsis DesignWare I2C adapter         I2C adapter
 i2c-1   smbus           SMBus I801 adapter at efa0              SMBus adapter
-i2c-2   i2c             Synopsys DesignWare I2C adapter         I2C adapter
-i2c-3   i2c             Synopsys DesignWare I2C adapter         I2C adapter
-i2c-4   i2c             Synopsys DesignWare I2C adapter         I2C adapter
-i2c-5   i2c             Synopsys DesignWare I2C adapter         I2C adapter
+i2c-2   i2c             Synopsis DesignWare I2C adapter         I2C adapter
+i2c-3   i2c             Synopsis DesignWare I2C adapter         I2C adapter
+i2c-4   i2c             Synopsis DesignWare I2C adapter         I2C adapter
+i2c-5   i2c             Synopsis DesignWare I2C adapter         I2C adapter
 i2c-6   i2c             i915 gmbus dpa                          I2C adapter
 i2c-7   i2c             i915 gmbus dpb                          I2C adapter
 i2c-8   i2c             i915 gmbus dpc                          I2C adapter

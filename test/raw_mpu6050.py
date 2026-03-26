@@ -3,7 +3,7 @@ import smbus2
 import time
 
 # The bus to which the MPU6050 is connected
-bus = smbus2.SMBus("/dev/i2c-10")
+bus = smbus2.SMBus("/dev/i2c-0")
 
 # Sensor address
 device_address = 0x68

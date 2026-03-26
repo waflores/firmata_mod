@@ -34,11 +34,9 @@ pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 # We need to modify the telemetrix wheel before we move forward
 pip.whl_mods(
     hub_name = "pypi_mods",
-    srcs_exclude_glob = ["site-packages/archive/**"],
     whl_name = "telemetrix",
 )
 use_repo(pip, "pypi_mods")
-
 pip.parse(
     hub_name = "pypi",
     python_version = "3.14",
@@ -49,5 +47,17 @@ pip.parse(
     whl_modifications = {
         "@pypi_mods//:telemetrix.json": "telemetrix",
     },
+)
+
+# You can add patches that will be applied on the whl contents.
+#
+# The patches have to be in the unified-diff format.
+pip.override(
+    file = "telemetrix-1.46-py3-none-any.whl",
+    patch_strip = 1,
+    patches = [
+        "//patches:telemetrix_remove_archive.patch",
+        "//patches:telemetrix_record.patch",
+    ],
 )
 use_repo(pip, "pypi")

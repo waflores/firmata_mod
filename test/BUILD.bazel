@@ -12,7 +12,7 @@ py_binary(
     name = "i2c_firmata",
     srcs = ["i2c_firmata.py"],
     visibility = ["//visibility:public"],
-    deps = [requirement("pyfirmata2")],
+    deps = [requirement("telemetrix")],
 )
 
 py_binary(

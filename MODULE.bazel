@@ -30,9 +30,24 @@ python.toolchain(
 use_repo(python, "python_versions")
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+
+# We need to modify the telemetrix wheel before we move forward
+pip.whl_mods(
+    hub_name = "pypi_mods",
+    srcs_exclude_glob = ["site-packages/archive/**"],
+    whl_name = "telemetrix",
+)
+use_repo(pip, "pypi_mods")
+
 pip.parse(
     hub_name = "pypi",
     python_version = "3.14",
     requirements_lock = "//:requirements_lock.txt",
+    # These modifications were created above and we
+    # are providing pip.parse with the label of the mod
+    # and the name of the wheel.
+    whl_modifications = {
+        "@pypi_mods//:telemetrix.json": "telemetrix",
+    },
 )
 use_repo(pip, "pypi")

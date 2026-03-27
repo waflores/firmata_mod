@@ -1,4 +1,8 @@
-startup --windows_enable_symlinks # --host_jvm_args=-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT
+startup --windows_enable_symlinks
+# For Windows: we'd want to add this flag to our startup: --host_jvm_args=-Djavax.net.ssl.trustStoreType=WINDOWS-ROOT
+# Set SSL certificate to handle corporate network
+startup --host_jvm_args=-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
+
 # startup --output_user_root=C:/bzl
 common --enable_platform_specific_config --repo_env=LC_ALL="en_US.UTF-8"
 common --show_timestamps --verbose_failures
@@ -24,3 +28,10 @@ build:windows --host_copt=-DWIN32_LEAN_AND_MEAN
 build:windows --host_copt=-DNOGDI
 
 common:windows --enable_runfiles # https://github.com/bazelbuild/bazel/issues/8843
+
+# Repository rules, such as rules_jvm_external: put Bazel's JDK on the path.
+# Avoids non-hermeticity from dependency on a JAVA_HOME pointing at a system JDK
+# see https://github.com/bazelbuild/rules_jvm_external/issues/445
+# common --repo_env="JAVA_HOME=../bazel_tools/jdk"
+# Docs: https://registry.build/flag/bazel@9.0.0?filter=repo_env
+

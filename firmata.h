@@ -63,7 +63,7 @@ typedef int (*firmata_event_cb_t)(struct platform_device *pdev,
                                   const u8 rxbuf[], int len);
 // TODO: const char?
 
-int firmata_serial_tx(struct platform_device *pdev, char *buf, int len);
+int firmata_serial_tx(struct platform_device *pdev, uint8_t *buf, int len);
 int firmata_register_event_cb(struct platform_device *pdev, u16 id,
                               firmata_event_cb_t event_cb);
 void firmata_unregister_event_cb(struct platform_device *pdev, u16 id);

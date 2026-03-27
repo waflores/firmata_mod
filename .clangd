@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clangd.json
+
+CompileFlags:
+  Add:
+    - -I/usr/src/linux-headers-6.17.0-14-generic/include/
+  BuiltinHeaders: QueryDriver
+
+Diagnostics:
+  UnusedIncludes: None
+  Includes:
+    AnalyzeAngledIncludes: false

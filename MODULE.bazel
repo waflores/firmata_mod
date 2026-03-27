@@ -7,20 +7,20 @@
 ###############################################################################
 module(name = "arduino_firmata_kernel_driver")
 
-bazel_dep(name = "rules_cc", version = "0.2.16")
+bazel_dep(name = "rules_cc", version = "0.2.17")
+bazel_dep(name = "rules_python", version = "1.8.3")
 
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
 git_override(
     module_name = "hedron_compile_commands",
-    commit = "abb61a688167623088f8768cc9264798df6a9d10",
+    # commit = "abb61a688167623088f8768cc9264798df6a9d10",  # Bleeding edge commit
+    commit = "7fe1eab26d2b8eeb5e1c6a2f38bddb001e3f9696",  # Commit which works in another project with Bazel v9.0.1
     remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
     # Replace the commit hash (above) with the latest (https://github.com/hedronvision/bazel-compile-commands-extractor/commits/main).
     # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
 )
-
-bazel_dep(name = "rules_python", version = "1.8.3")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
@@ -37,6 +37,7 @@ pip.whl_mods(
     whl_name = "telemetrix",
 )
 use_repo(pip, "pypi_mods")
+
 pip.parse(
     hub_name = "pypi",
     python_version = "3.14",
@@ -61,3 +62,26 @@ pip.override(
     ],
 )
 use_repo(pip, "pypi")
+
+# For firmata4j
+bazel_dep(name = "rules_jvm_external", version = "6.10")
+
+# We need this due to: https://github.com/bazel-contrib/rules_jvm_external/issues/1535
+single_version_override(
+    module_name = "rules_android",
+    version = "0.7.1",
+)
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        # Source: https://mvnrepository.com/artifact/com.github.kurbatov/firmata4j
+        "com.github.kurbatov:firmata4j:master-798ebcc123-1",
+    ],
+    known_contributing_modules = ["protobuf"],
+    lock_file = "//:maven_install.json",
+    repositories = [
+        "https://jitpack.io",
+    ],
+)
+use_repo(maven, "maven")

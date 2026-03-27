@@ -14,8 +14,8 @@
 #define FIRMATA_I2C_BUF_SIZE 100
 
 /* Message codes in an I2C SYSEX message being sent */
-#define I2C_REQUEST 0x76
-#define I2C_CONFIG 0x78
+const uint32_t I2C_REQUEST = 0x76;
+const uint32_t I2C_CONFIG = 0x78;
 
 struct firmata_i2c {
   struct platform_device *pdev;
@@ -61,6 +61,7 @@ static int i2c_reply_cb(struct platform_device *pdev, const u8 rxbuf[],
   reg = rxbuf[3] | (rxbuf[4] << 7);
   pr_info("i2c_reply_cb: addr 0x%04x reg 0x%04x\n", addr, reg);
 
+  // TODO(@WFlores) - NO MAGIC NUMBERS!
   i = 5;
   while ((rxbuf[i] != END_SYSEX) && (i / 2 < FIRMATA_I2C_BUF_SIZE)) {
     i2c->buf[(i - 5) / 2] = (rxbuf[i] & 0x7F) | ((rxbuf[i + 1] & 0x7F) << 7);

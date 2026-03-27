@@ -188,7 +188,7 @@ static void firmata_ldisc_close(struct tty_struct *tty) {
   struct firmata_priv *firmata = tty->disc_data;
 
   pr_info("In firmata_ldisc_close\n");
-  // TODO: Here we need to shut down all revices on the busses of this channel
+  // TODO: Here we need to shut down all devices on the busses of this channel
   /* Give UART one final chance to flush.
    * No need to clear TTY_DO_WRITE_WAKEUP since .write_wakeup() is
    * serialised against .close() and will not be called once we return.
@@ -243,7 +243,7 @@ static int serial_send(struct tty_struct *tty, uint8_t *buf, int n) {
   return 0;
 }
 
-int firmata_serial_tx(struct platform_device *pdev, char *buf, int len) {
+int firmata_serial_tx(struct platform_device *pdev, uint8_t *buf, int len) {
   struct firmata_priv *firmata = dev_get_drvdata(pdev->dev.parent);
   int ret;
 
@@ -255,7 +255,7 @@ int firmata_serial_tx(struct platform_device *pdev, char *buf, int len) {
 EXPORT_SYMBOL(firmata_serial_tx);
 
 static int run_event_callbacks(struct firmata_priv *firmata, u16 id,
-                               char data[], int len) {
+                               uint8_t data[], int len) {
   struct firmata_event_cb_entry *i;
   int bytes_read = 0;
 

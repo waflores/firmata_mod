@@ -20,6 +20,7 @@ pkgs.mkShell.override
       clang-tools
       clang-uml
       compiledb
+      linuxKernel.kernels.linux_6_12  # The highest available at this nixpkgs
       # keep-sorted end
     ];
   }

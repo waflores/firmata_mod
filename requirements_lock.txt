@@ -47,6 +47,10 @@ dbus-fast==4.0.0 \
     --hash=sha256:f6af190d8306f1bd506740c39701f5c211aa31ac660a3fcb401ebb97d33166c7 \
     --hash=sha256:ffc16ee344e68a907a40327074bca736086897f2e783541086eedb5e6855f3f0
     # via bleak
+mfusepy==3.1.1 \
+    --hash=sha256:338ece54513d7d1a5e9492837679a0c7432ecf96a03490a2683a1ce1d19570e1 \
+    --hash=sha256:69fb70cfc7f7cce595e6ff586f8451d8298f01f18286a157f24f564b24ec5a37
+    # via -r requirements.in
 pyfirmata2==2.5.1 \
     --hash=sha256:0b5479b152afb6902b5c7c458d4fd496957776db98287e4b317c21269ebe908e \
     --hash=sha256:5ef8fc5caec084e72c6b7f199362a743854c9bd63a93cacbaa0c7bbb99efef75

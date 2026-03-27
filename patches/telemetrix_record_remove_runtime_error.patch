@@ -1,0 +1,11 @@
+--- a/telemetrix-1.46.dist-info/RECORD
++++ b/telemetrix-1.46.dist-info/RECORD
+@@ -148,7 +148,7 @@
+ play/spi_div.py,sha256=o2batPwgmIrpM6cRB485n2kzKMN4xXuVZNQeZqsMJnA,60
+ telemetrix/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+ telemetrix/private_constants.py,sha256=FEwUJKsULtypqx0xPqjWC1VPaosZlwRasm6TE418Pho,4130
+-telemetrix/telemetrix.py,sha256=2w_g_9MERDa2M52rpkwN4Ojx19ydtl4M-WHTe3xHljo,91012
++telemetrix/telemetrix.py,sha256=oEfRWqeD-CouoyA-zT-kiBh1pG-yAAVOocxpK29gsLw,91141
+ venv/bin/activate_this.py,sha256=qDezTgSWWeApEoBd4Yg5DVwIkSm70JMftkHp_T-BQco,1200
+ telemetrix-1.46.dist-info/METADATA,sha256=DZqqPg-xp_6tVcH8_9LPLGNm9wU7frm3lS8bKQr7AmM,3480
+ telemetrix-1.46.dist-info/WHEEL,sha256=_zCd3N1l69ArxyTb8rzEoP9TpbYXkqRFSNOD5OuxnTs,91

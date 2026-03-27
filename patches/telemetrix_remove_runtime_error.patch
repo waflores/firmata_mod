@@ -1,0 +1,25 @@
+diff --git a/telemetrix/telemetrix.py b/telemetrix/telemetrix.py
+index 64c567f..756b7de 100644
+--- a/telemetrix/telemetrix.py
++++ b/telemetrix/telemetrix.py
+@@ -413,7 +413,9 @@ class Telemetrix(threading.Thread):
+                 return
+         if self.shutdown_on_exception:
+             self.shutdown()
+-        raise RuntimeError(f'Incorrect Arduino ID: {self.reported_arduino_id}')
++        print(f"Not blowing up, but here's the Arduino ID received: {self.reported_arduino_id}")
++        self.serial_port.reset_input_buffer()
++        self.serial_port.reset_output_buffer()
+
+     def _manual_open(self):
+         """
+@@ -437,7 +439,8 @@ class Telemetrix(threading.Thread):
+             if self.reported_arduino_id != self.arduino_instance_id:
+                 if self.shutdown_on_exception:
+                     self.shutdown()
+-                raise RuntimeError(f'Incorrect Arduino ID: {self.reported_arduino_id}')
++                print(f"Not blowing up, but here's the Arduino ID received: {self.reported_arduino_id}")
++
+             print('Valid Arduino ID Found.')
+             # get arduino firmware version and print it
+             print('\nRetrieving Telemetrix4Arduino firmware ID...')

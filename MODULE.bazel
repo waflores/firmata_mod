@@ -59,6 +59,8 @@ pip.override(
     patches = [
         "//patches:telemetrix_remove_archive.patch",
         "//patches:telemetrix_record.patch",
+        "//patches:telemetrix_remove_runtime_error.patch",
+        "//patches:telemetrix_record_remove_runtime_error.patch",
     ],
 )
 use_repo(pip, "pypi")

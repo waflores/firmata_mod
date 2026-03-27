@@ -1,0 +1,24 @@
+load("@pypi//:requirements.bzl", "requirement")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+
+package(default_visibility = ["//visibility:public"])
+
+py_library(
+    name = "pylib",
+    srcs = [
+        "__init__.py",
+        "main.py",
+    ],
+)
+
+py_binary(
+    name = "i2c_daemon",
+    srcs = [
+        "i2c_daemon.py",
+    ],
+    deps = [
+        ":pylib",
+        requirement("telemetrix"),
+        requirement("watchdog"),
+    ],
+)

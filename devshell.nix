@@ -9,6 +9,9 @@ pkgs.mkShell.override
   }
   rec {
     name = "firmata-shell";
+    # shellHook = ''
+    # export JAVA_HOME=${pkgs.jdk21_headless.home}
+    # '';
 
     packages = with pkgs; [
       # keep-sorted start block=yes case=no
@@ -20,7 +23,8 @@ pkgs.mkShell.override
       clang-tools
       clang-uml
       compiledb
-      linuxKernel.kernels.linux_6_12  # The highest available at this nixpkgs
+      jdk21_headless
+      linuxKernel.kernels.linux_6_12 # The highest available at this nixpkgs
       # keep-sorted end
     ];
   }

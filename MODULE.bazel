@@ -63,25 +63,26 @@ pip.override(
 )
 use_repo(pip, "pypi")
 
-# For firmata4j
-bazel_dep(name = "rules_jvm_external", version = "6.10")
+# # For firmata4j
+# bazel_dep(name = "rules_java", version = "9.6.1")
+# bazel_dep(name = "rules_jvm_external", version = "6.10")
 
-# We need this due to: https://github.com/bazel-contrib/rules_jvm_external/issues/1535
-single_version_override(
-    module_name = "rules_android",
-    version = "0.7.1",
-)
+# # We need this due to: https://github.com/bazel-contrib/rules_jvm_external/issues/1535
+# single_version_override(
+#     module_name = "rules_android",
+#     version = "0.7.1",
+# )
 
-maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
-maven.install(
-    artifacts = [
-        # Source: https://mvnrepository.com/artifact/com.github.kurbatov/firmata4j
-        "com.github.kurbatov:firmata4j:master-798ebcc123-1",
-    ],
-    known_contributing_modules = ["protobuf"],
-    lock_file = "//:maven_install.json",
-    repositories = [
-        "https://jitpack.io",
-    ],
-)
-use_repo(maven, "maven")
+# maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+# maven.install(
+#     artifacts = [
+#         # Source: https://mvnrepository.com/artifact/com.github.kurbatov/firmata4j
+#         "com.github.kurbatov:firmata4j:master-798ebcc123-1",
+#     ],
+#     known_contributing_modules = ["protobuf"],
+#     lock_file = "//:maven_install.json",
+#     repositories = [
+#         "https://jitpack.io",
+#     ],
+# )
+# use_repo(maven, "maven")

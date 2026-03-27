@@ -5,7 +5,7 @@ startup --windows_enable_symlinks
 startup --host_jvm_args=-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
 
 # Debug SSL trustStore issues
-startup --host_jvm_args=-Djavax.net.debug=all
+# startup --host_jvm_args=-Djavax.net.debug=all
 
 # startup --output_user_root=C:/bzl
 common --enable_platform_specific_config --repo_env=LC_ALL="en_US.UTF-8"

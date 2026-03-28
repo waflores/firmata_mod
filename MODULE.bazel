@@ -8,7 +8,7 @@
 module(name = "arduino_firmata_kernel_driver")
 
 bazel_dep(name = "rules_cc", version = "0.2.17")
-bazel_dep(name = "rules_python", version = "1.8.3")
+bazel_dep(name = "rules_python", version = "1.9.0")
 
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
@@ -88,3 +88,30 @@ use_repo(pip, "pypi")
 #     ],
 # )
 # use_repo(maven, "maven")
+
+bazel_dep(name = "llvm", version = "0.6.0")
+
+register_toolchains("@llvm//toolchain:all")
+
+# https://github.com/fmeum/buildozer
+BUILDOZER_VERSION = "8.2.1"
+
+archive_override(
+    module_name = "buildozer",
+    integrity = "sha256-qguc6LLFdWL7OXk1Bm2fatLqzOEggu1Av5wAVNiJnec=",
+    strip_prefix = "buildozer-%s" % BUILDOZER_VERSION,
+    url = "https://github.com/fmeum/buildozer/releases/download/v{0}/buildozer-v{0}.tar.gz".format(BUILDOZER_VERSION),
+)
+
+# Taking inspiration from: https://github.com/robinlinden/hastur/blob/ce9041176637be99ef747f58bef83da0ca6f946f/MODULE.bazel
+# HEAD as of 2026-01-05.
+# https://github.com/erenon/bazel_clang_tidy
+BAZEL_CLANG_TIDY_VERSION = "da986512bf1a46831d886fd090393b93b8967a5d"
+
+bazel_dep(name = "bazel_clang_tidy", dev_dependency = True)  # MIT
+archive_override(
+    module_name = "bazel_clang_tidy",
+    integrity = "sha256-WkayQxTZZiU6BVCPgCq0sDQoNrcPeGQa/vbM/UQRIS8=",
+    strip_prefix = "bazel_clang_tidy-%s" % BAZEL_CLANG_TIDY_VERSION,
+    url = "https://github.com/erenon/bazel_clang_tidy/archive/%s.tar.gz" % BAZEL_CLANG_TIDY_VERSION,
+)

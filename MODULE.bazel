@@ -41,8 +41,12 @@ use_repo(pip, "pypi_mods")
 pip.parse(
     hub_name = "pypi",
     python_version = "3.14",
-    requirements_lock = "requirements_lock.txt",
-    requirements_windows = "requirements_windows.txt",
+    requirements_by_platform = {
+        # Default requirements file for needs to explicitly provide the platforms
+        "//:requirements_lock.txt": "linux_*,osx_*",
+        "//:requirements_windows.txt": "windows_x86_64",
+    },
+
     # These modifications were created above and we
     # are providing pip.parse with the label of the mod
     # and the name of the wheel.
